@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+    galaxy-auth:
+        container_name: galaxy-auth
+        image: node:16-alpine3.12
+        env_file: .env
+        working_dir: /src
+        volumes:
+            - .:/src
+        ports:
+            - 8080:8080
+        command:
+            - /bin/sh
+            - -c
+            - |
+                npm i
+                npm run dev
